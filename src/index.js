@@ -1,4 +1,4 @@
-
+'use strict';
 /**
  * Module dependencies.
  */
@@ -7,8 +7,10 @@ import Parser from './parser';
 import Promise from 'bluebird';
 import Requester from './requester';
 import _ from 'lodash';
+import fs from 'fs';
 import methods from './methods';
 import request from 'request';
+import { rpc } from '../config/index';
 import semver from 'semver';
 
 /**
@@ -33,9 +35,8 @@ function source(...args) {
  */
 
 const networks = {
-  mainnet: 8332,
-  regtest: 18332,
-  testnet: 18332
+  mainnet: 8334,
+  testnet: 18334
 };
 
 /**
@@ -46,20 +47,19 @@ class Client {
   constructor({
     agentOptions,
     headers = false,
-    host = 'localhost',
-    network = 'mainnet',
-    password,
+    host = rpc.host || 'localhost',
+    network = rpc.network || 'mainnet',
+    password = rpc.password || null,
     port,
-    ssl = false,
+    ssl = rpc.ssl || false,
     timeout = 30000,
-    username,
+    username = rpc.username || null,
     version
   } = {}) {
     if (!_.has(networks, network)) {
       throw new Error(`Invalid network name "${network}"`, { network });
     }
 
-    this.agentOptions = agentOptions;
     this.auth = (password || username) && { pass: password, user: username };
     this.headers = headers;
     this.host = host;
@@ -70,6 +70,15 @@ class Client {
       enabled: _.get(ssl, 'enabled', ssl),
       strict: _.get(ssl, 'strict', _.get(ssl, 'enabled', ssl))
     };
+
+    this.agentOptions = agentOptions;
+    if (rpc.certpath) {
+      // Load the certificate
+      this.agentOptions = {
+        /* eslint no-sync: "off"*/
+        ca: fs.readFileSync(rpc.certpath)
+      };
+    }
 
     // Find unsupported methods according to version.
     let unsupported = [];

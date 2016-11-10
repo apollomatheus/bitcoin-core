@@ -1,0 +1,21 @@
+/**
+  To setup the configuration please create a rpc-config.json in the config folder
+  and set it up like this one
+  Sample:
+
+  {
+    "rpc": {
+      "username": "your-username",
+      "password": "your-password",
+      "network": "mainnet", // [Optional] Default is mainnet
+      "port": 8334, // [Optional] Default is 8334
+      "host": "your-host", // [Optional] Default is localhost
+      "ssl": { // [Optional] Default is false
+        "enabled": true,
+        "strict": false
+      },
+      "certpath": "" // [Optional] Path to your ssl certificate
+    }
+  }
+
+*/

@@ -1,3 +1,6 @@
 .nyc_output
 coverage
 node_modules
+rpc-config.*.json
+!rpc-config.sample.json
+dist

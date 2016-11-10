@@ -18,7 +18,7 @@
     "email": "rui.marinho@seegno.com",
     "url": "http://seegno.com"
   },
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/seegno/bitcoin-core.git"
@@ -31,7 +31,7 @@
     "prepublish": "npm run transpile",
     "test": "NODE_ENV=test mocha $npm_package_options_mocha",
     "testdocker": "docker-compose run --rm sut",
-    "transpile": "rm -rf dist/* && babel src --out-dir dist/src",
+    "transpile": "rm -rf dist/* && babel src --out-dir dist/ --copy-files",
     "version": "npm run changelog --future-release=$npm_package_version && npm run transpile && git add -A CHANGELOG.md dist"
   },
   "dependencies": {
