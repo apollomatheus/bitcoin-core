@@ -13,7 +13,9 @@ if (!process.env.NODE_ENV) {
 
 const env = process.env.NODE_ENV;
 // Default configuration
-const all = {};
+const all = {
+  rpc: {}
+};
 
 // Export the config object based on the NODE_ENV
 // ==============================================

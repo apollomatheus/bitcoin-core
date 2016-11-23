@@ -30,7 +30,7 @@ function get(body, { headers = false, response } = {}) {
     return [body.result, response.headers];
   }
 
-  return body.result;
+  return body;
 }
 
 /**
