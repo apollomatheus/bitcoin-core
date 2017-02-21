@@ -36,6 +36,7 @@ exports.default = {
   getAddedNodeInfo: '>=0.8.0',
   getAddressTxids: '>=0.1.0',
   getAddressesByAccount: '>=0.1.0',
+  getAdminInfo: '<0.10.0',
   getBalance: '>=0.3.18',
   getBestBlockHash: '>=0.9.0',
   getBlock: '>=0.6.0',
