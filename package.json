@@ -10,8 +10,8 @@
     "rest",
     "rpc"
   ],
-  "homepage": "https://github.com/seegno/bitcoin-core",
-  "bugs": "https://github.com/seegno/bitcoin-core/issues",
+  "homepage": "https://github.com/apollomatheus/bitcoin-core",
+  "bugs": "https://github.com/apollomatheus/bitcoin-core/issues",
   "license": "MIT",
   "author": {
     "name": "Rui Marinho",
@@ -21,7 +21,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/seegno/bitcoin-core.git"
+    "url": "https://github.com/apollomatheus/bitcoin-core.git"
   },
   "scripts": {
     "changelog": "github_changelog_generator --no-issues --header-label='# Changelog' --future-release=$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
